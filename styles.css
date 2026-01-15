@@ -72,6 +72,7 @@ body::after {
     width: 20px;
     height: 20px;
     border: 2px solid var(--purple-primary);
+    background: transparent;
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
@@ -1334,3 +1335,67 @@ body::after {
     }
 }
 
+/*Animação carrosel*/
+.team-carousel {
+    width: 100%;
+    overflow-x: auto; 
+    padding: 30px 0;
+    cursor: grab;
+    scroll-behavior: smooth; 
+    -ms-overflow-style: none; 
+    scrollbar-width: none;  
+}
+
+.team-carousel::-webkit-scrollbar {
+    display: none; 
+}
+
+.team-grid {
+    display: flex !important;
+    gap: 40px;
+    width: max-content;
+    padding: 0 50px;
+    
+}
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    background: var(--gradient-purple);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px var(--purple-primary);
+}
+
+.nav-btn.prev { left: -20px; }
+.nav-btn.next { right: -20px; }
+
+@media (max-width: 768px) {
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+    }
+    .nav-btn.prev { left: 5px; }
+    .nav-btn.next { right: 5px; }
+}

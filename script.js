@@ -40,7 +40,7 @@ createStars();
 
 // Cursor personalizado
 const cursor = document.querySelector('.cursor');
-const cursorFollower = document.querySelector('.cursor-follower');
+// const cursorFollower = document.querySelector('.cursor-follower');
 
 let mouseX = 0;
 let mouseY = 0;
@@ -127,8 +127,8 @@ function animateFollower() {
     followerX += (mouseX - followerX) * 0.1;
     followerY += (mouseY - followerY) * 0.1;
     
-    cursorFollower.style.left = followerX + 'px';
-    cursorFollower.style.top = followerY + 'px';
+    // cursorFollower.style.left = followerX + 'px';
+    // cursorFollower.style.top = followerY + 'px';
     
     requestAnimationFrame(animateFollower);
 }
@@ -284,4 +284,32 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+// Gerar Carrossel da equipe
+const teamCarousel = document.querySelector('.team-carousel');
+const btnPrev = document.querySelector('.nav-btn.prev');
+const btnNext = document.querySelector('.nav-btn.next');
 
+if (teamCarousel && btnPrev && btnNext) {
+    const scrollAmount = 320;
+
+    btnNext.addEventListener('click', () => {
+        teamCarousel.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    });
+
+    btnPrev.addEventListener('click', () => {
+        teamCarousel.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+        });
+    });
+
+    teamCarousel.addEventListener('wheel', (e) => {
+        if (e.deltaY !== 0) {
+            e.preventDefault();
+            teamCarousel.scrollLeft += e.deltaY;
+        }
+    }, { passive: false });
+}
